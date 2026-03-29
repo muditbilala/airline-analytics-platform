@@ -43,7 +43,7 @@ export default function DelayCauseChart({ data, loading }: Props) {
               borderRadius: 8,
               color: "#ccd6f6",
             }}
-            formatter={(value: number) => [`${value.toFixed(1)}%`, "Share"]}
+            formatter={(value) => [`${Number(value).toFixed(1)}%`, "Share"]}
           />
           <Legend
             wrapperStyle={{ color: "#8892b0", fontSize: 12 }}

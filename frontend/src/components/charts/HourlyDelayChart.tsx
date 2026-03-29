@@ -39,8 +39,8 @@ export default function HourlyDelayChart({ data, loading }: Props) {
               borderRadius: 8,
               color: "#ccd6f6",
             }}
-            formatter={(value: number) => [`${value.toFixed(1)}%`, "Delay Rate"]}
-            labelFormatter={(label: number) => `${label}:00`}
+            formatter={(value) => [`${Number(value).toFixed(1)}%`, "Delay Rate"]}
+            labelFormatter={(label) => `${label}:00`}
           />
           <Bar
             dataKey="delay_rate"

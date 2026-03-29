@@ -93,11 +93,12 @@ function FlightArc({ start, end, color }: ArcProps) {
     }
   });
 
-  return (
-    <line ref={ref as React.RefObject<never>} geometry={geometry}>
-      <lineBasicMaterial color={color} transparent opacity={0.5} linewidth={1} />
-    </line>
-  );
+  const line = useMemo(() => {
+    const mat = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.5 });
+    return new THREE.Line(geometry, mat);
+  }, [geometry, color]);
+
+  return <primitive ref={ref as React.RefObject<never>} object={line} />;
 }
 
 const FLIGHT_ARCS: ArcProps[] = [

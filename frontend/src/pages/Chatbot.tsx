@@ -177,14 +177,14 @@ export default function Chatbot() {
                     <p className="text-sm text-text-primary whitespace-pre-wrap leading-relaxed">
                       {msg.text}
                     </p>
-                    {msg.role === "bot" && msg.data && msg.chartType && (
+                    {msg.role === "bot" && Boolean(msg.data) && msg.chartType && (
                       <ChatResponseChart
                         chartType={msg.chartType}
                         data={msg.data}
                       />
                     )}
                     {msg.role === "bot" &&
-                      msg.data &&
+                      Boolean(msg.data) &&
                       !msg.chartType &&
                       renderTable(msg.data)}
                   </div>

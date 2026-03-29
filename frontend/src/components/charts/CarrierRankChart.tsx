@@ -49,7 +49,7 @@ export default function CarrierRankChart({ data, loading }: Props) {
               borderRadius: 8,
               color: "#ccd6f6",
             }}
-            formatter={(value: number) => [`${value.toFixed(1)} min`, "Avg Delay"]}
+            formatter={(value) => [`${Number(value).toFixed(1)} min`, "Avg Delay"]}
           />
           <Bar dataKey="avg_delay" fill="#64ffda" radius={[0, 4, 4, 0]} maxBarSize={24} />
         </BarChart>
