@@ -6,12 +6,12 @@ mkdir -p data/processed
 if [ ! -f "$DB_PATH" ]; then
     if [ -n "$DUCKDB_URL" ]; then
         echo "Downloading flights.duckdb via Python requests ..."
-        python3 - <<PYEOF
+        python3 - <<'PYEOF'
 import requests, sys, os
-url = os.environ["DUCKDB_URL"]
+url = os.environ["DUCKDB_URL"].strip()   # strip newlines/spaces
 dest = "data/processed/flights.duckdb"
 print(f"GET {url}", flush=True)
-r = requests.get(url, stream=True, timeout=120, allow_redirects=True)
+r = requests.get(url, stream=True, timeout=300, allow_redirects=True)
 r.raise_for_status()
 total = 0
 with open(dest, "wb") as f:
