@@ -6,7 +6,11 @@
  * with the VITE_API_URL environment variable.
  */
 
-const BASE = (import.meta.env.VITE_API_URL as string) || "http://localhost:8000";
+const _raw = import.meta.env.VITE_API_URL;
+const BASE: string =
+  typeof _raw === "string" && _raw.trim().length > 0
+    ? _raw.replace(/\/$/, "")   // strip any trailing slash
+    : "http://localhost:8000";
 
 // ---------------------------------------------------------------------------
 // Shared types (mirror backend Pydantic schemas)
